@@ -24,10 +24,10 @@ const Header = () => {
         <Tune />
       </div>
       <div className="extra-options">
-        <HelpOutline style={{ padding: 20 ,color:"#202124af"}} />
-        <Settings style={{ padding: 20,color:"#202124af", }} />
-        <Apps style={{ padding: 20,color:"#202124af", }}  />
-        <Person style={{ padding: 20 ,color:"#202124af",}} />
+        <HelpOutline style={{ padding: 20, color: "#202124af" }} />
+        <Settings style={{ padding: 20, color: "#202124af" }} />
+        <Apps style={{ padding: 20, color: "#202124af" }} />
+        <Person style={{ padding: 20, color: "#202124af" }} />
       </div>
     </div>
   );
