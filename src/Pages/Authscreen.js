@@ -1,10 +1,12 @@
 import { Error } from "@material-ui/icons";
 import { useState } from "react";
 import { useCookies } from "react-cookie";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { setIsloading } from "../Reducers/loaderSlice";
 
 const Authscreen = () => {
+  const dispatch = useDispatch();
   const navigation = useNavigate();
   const isloading = useSelector((state) => {
     return state.loader.isloading;
@@ -21,14 +23,17 @@ const Authscreen = () => {
   const [error, setError] = useState(null);
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
+    console.log(user);
   };
   const handleSubmit = () => {
     if (
-      user?.email?.length < 1 ||
-      user?.name?.length < 1 ||
-      user?.password?.length < 1 ||
-      user?.profile_pic?.length < 1 ||
-      !user
+      (!islogin &&
+        (user?.email?.length < 1 ||
+          user?.name?.length < 1 ||
+          user?.password?.length < 1 ||
+          user?.profile_pic?.length < 1 ||
+          !user)) ||
+      (islogin && (user?.email?.length < 1 || user?.password?.length < 1))
     ) {
       return setError(`Fields should not be empty`);
     } else {
@@ -42,6 +47,7 @@ const Authscreen = () => {
         setError("Passwords don't match");
       } else {
         setError(null);
+        dispatch(setIsloading(true));
         const url = `http://localhost:8000/${islogin ? "signin" : "signup"}`;
         fetch(url, {
           method: "Post",
@@ -51,12 +57,14 @@ const Authscreen = () => {
           if (res.status == 403) {
             res.json().then((data) => {
               console.log(data);
+              dispatch(setIsloading(false));
               setError(data);
             });
           }
           if (res.status == 200) {
             res.json().then((data) => {
               setError("");
+              dispatch(setIsloading(false));
               setCookie("authToken", data.authToken);
               setCookie("user_id", data.user_id);
               navigation("/home");
@@ -149,11 +157,13 @@ const Authscreen = () => {
             </div>
           </div>
           <div className="authscreen-submit">
-            <input
-              type="button"
-              value={islogin ? "Signin" : "Sign up"}
-              onClick={handleSubmit}
-            />
+            <div className="submit-container" onClick={handleSubmit}>
+              {!isloading ? (
+                <div> {islogin ? "Signin" : "Sign up"}</div>
+              ) : (
+                <div className="loader"></div>
+              )}
+            </div>
           </div>
         </div>
       </div>
