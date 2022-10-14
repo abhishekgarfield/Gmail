@@ -1,20 +1,33 @@
 import { Error } from "@material-ui/icons";
 import { useState } from "react";
+import { useCookies } from "react-cookie";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Authscreen = () => {
+  const navigation = useNavigate();
+  const isloading = useSelector((state) => {
+    return state.loader.isloading;
+  });
+  const [cookies, setCookie, removeCookie] = useCookies(`[user]`);
   const [islogin, setislogin] = useState(true);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmpassword: "",
+    profile_pic: "",
+  });
   const [error, setError] = useState(null);
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
-    console.log(user);
   };
   const handleSubmit = () => {
     if (
-      user.email?.length < 1 ||
-      user.name?.length < 1 ||
-      user.password?.length < 1 ||
-      user.profile_pic?.length < 1 ||
+      user?.email?.length < 1 ||
+      user?.name?.length < 1 ||
+      user?.password?.length < 1 ||
+      user?.profile_pic?.length < 1 ||
       !user
     ) {
       return setError(`Fields should not be empty`);
@@ -29,6 +42,28 @@ const Authscreen = () => {
         setError("Passwords don't match");
       } else {
         setError(null);
+        const url = `http://localhost:8000/${islogin ? "signin" : "signup"}`;
+        fetch(url, {
+          method: "Post",
+          headers: { "Content-type": "application/json" },
+          body: JSON.stringify(user),
+        }).then((res) => {
+          if (res.status == 403) {
+            res.json().then((data) => {
+              console.log(data);
+              setError(data);
+            });
+          }
+          if (res.status == 200) {
+            res.json().then((data) => {
+              setError("");
+              setCookie("authToken", data.authToken);
+              setCookie("user_id", data.user_id);
+              navigation("/home");
+              window.location.reload();
+            });
+          }
+        });
       }
     }
   };
@@ -51,7 +86,7 @@ const Authscreen = () => {
               type="text"
               placeholder="Name"
               name="name"
-              value={user?.name}
+              value={user ? user.name : ""}
               onChange={(e) => handleChange(e)}
             />
           )}
@@ -59,14 +94,14 @@ const Authscreen = () => {
             type="text"
             placeholder="Email"
             name="email"
-            value={user?.email}
+            value={user ? user.email : ""}
             onChange={(e) => handleChange(e)}
           />
           <input
             type="password"
             placeholder="Password"
             name="password"
-            value={user?.password}
+            value={user ? user.password : ""}
             onChange={(e) => handleChange(e)}
           />
           {!islogin && (
@@ -74,7 +109,7 @@ const Authscreen = () => {
               type="password"
               placeholder="Confirm password"
               name="confirmpassword"
-              value={user?.confirmpassword}
+              value={user ? user.confirmpassword : ""}
               onChange={(e) => handleChange(e)}
             />
           )}
@@ -83,7 +118,7 @@ const Authscreen = () => {
               type="url"
               placeholder="Profile pic"
               name="profile_pic"
-              value={user?.profile_pic}
+              value={user ? user.profile_pic : ""}
               onChange={(e) => handleChange(e)}
             />
           )}

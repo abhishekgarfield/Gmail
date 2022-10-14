@@ -7,7 +7,7 @@ import Store from "./store";
 
 function App() {
   const [cookies, setCookie, removeCookie] = useCookies(`[user]`);
-  const authToken = false; //cookies.authToken;
+  const authToken = cookies.authToken;
   return (
     <Provider store={Store}>
       <BrowserRouter>
