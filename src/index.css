@@ -185,7 +185,7 @@ code {
 .feed-section {
   display: flex;
   flex: 1 0 80%;
-  background-color: white;
+  background-color: #f5f5f5;
   flex-direction: row;
 }
 
@@ -200,7 +200,9 @@ code {
   display: flex;
   flex: 1 0 70%;
   flex-direction: row;
-  background-color: yellow;
+  background-color: white;
+  border-radius: 15px;
+  margin:0px 15px 15px 10px;
 }
 
 
@@ -280,6 +282,13 @@ code {
   align-items: center;
   justify-content: center;
   margin-bottom: 10px;
+  padding: 0px 10px;
+}
+.Extremeside-drawer:hover{
+  background-color:rgba(211, 211, 211, 0.803);
+  cursor: pointer;
+  border-radius: 50%;
+  
 }
 
 .Extremeside-options {
