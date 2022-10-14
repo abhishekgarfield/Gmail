@@ -70,10 +70,14 @@ code {
   display: flex;
   font-size: 15px;
   margin: 0.5rem 0rem 0rem 0rem;
-  padding: 15px;
+  padding: 17px;
   outline: none;
   border: 1px solid rgba(0, 0, 0, 0.201);
   border-radius: 5px;
+}
+
+.authscreen-form input:focus {
+  border: 1px solid #1a73e8;
 }
 
 .authscreen-footer {

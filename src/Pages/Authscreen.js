@@ -11,10 +11,11 @@ const Authscreen = () => {
   };
   const handleSubmit = () => {
     if (
-      user.email.length < 1 ||
-      user.name.length < 1 ||
-      user.password.length < 1 ||
-      user.profile_pic.length < 1
+      user.email?.length < 1 ||
+      user.name?.length < 1 ||
+      user.password?.length < 1 ||
+      user.profile_pic?.length < 1 ||
+      !user
     ) {
       return setError(`Fields should not be empty`);
     } else {
