@@ -1,6 +1,5 @@
 import { Error } from "@material-ui/icons";
 import { useState } from "react";
-import { useSelector } from "react-redux";
 
 const Authscreen = () => {
   const [islogin, setislogin] = useState(true);
@@ -36,13 +35,16 @@ const Authscreen = () => {
     <div className="authscreen-main-container">
       <div className="mid-container">
         <div className="google-logo">
-          <img src="https://i.imgur.com/eKUuaya.png" />
+          <img src="https://i.imgur.com/eKUuaya.png" alt="google logo" />
         </div>
         <div className="authscreen-title">{islogin ? "Sign in" : "Signup"}</div>
         <div className="authscreen-info">
           <span>to continue to Gmail</span>
         </div>
-        <div className="authscreen-form"  style={error?{marginBottom:0}:{marginBottom:20}}>
+        <div
+          className="authscreen-form"
+          style={error ? { marginBottom: 0 } : { marginBottom: 20 }}
+        >
           {!islogin && (
             <input
               type="text"
@@ -85,7 +87,12 @@ const Authscreen = () => {
             />
           )}
         </div>
-        {error && <p className="error-show"><Error style={{fontSize:18,marginRight:2}}/>{error}</p>}
+        {error && (
+          <p className="error-show">
+            <Error style={{ fontSize: 18, marginRight: 2 }} />
+            {error}
+          </p>
+        )}
         <div className="authscreen-footer">
           <div className="aithscreen-options">
             <div className="authscreen-question">

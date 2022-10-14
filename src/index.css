@@ -119,7 +119,8 @@ code {
   color: rgba(0, 0, 0, 0.347);
   font-size: 10px;
 }
-.error-show{
+
+.error-show {
   display: flex;
   align-items: center;
   color: red;
