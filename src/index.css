@@ -87,9 +87,10 @@ code {
 .authscreen-footer .qurstion-button {
   color: #1a73e8;
   font-weight: 500;
+  font-size: 15pxpx;
 }
 
-.authscreen-footer span:hover {
+.authscreen-footer .qurstion-button:hover {
   cursor: pointer;
 }
 
@@ -117,4 +118,11 @@ code {
   align-items: center;
   color: rgba(0, 0, 0, 0.347);
   font-size: 10px;
+}
+.error-show{
+  display: flex;
+  align-items: center;
+  color: red;
+  font-size: 12px;
+  font-weight: 500;
 }
