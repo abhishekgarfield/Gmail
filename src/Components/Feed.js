@@ -15,9 +15,9 @@ const emails = [
   {
     sender_user_id: 1,
     recievers_user_id: 2,
-    sender_name: "abhishek",
-    email_content: "hi abhishek how r uh ? hi abhishek how r uh  hi abhishek how r uh  hi abhishek how r uh hi abhishek how r uh ",
-    subject: "hi buddy",
+    sender_name: "Abhishek",
+    email_content: "hi abhishek how r uh ? hi abhishek how r uh  hi abhishek how r uh  hi abhishek how r uh hi abhishek how r uh  r uh ? hi abhishek how r uh  hi abhishek how r uh  hi abhishek how r uh hi abhishek how r uh",
+    subject: "hi buddy  ",
     timestamp: new Date().toDateString(),
   },
   {
@@ -57,6 +57,7 @@ const Feed = () => {
   };
   return (
     <div className="feed-container">
+        
       <div className="feed-header-row">
         <CheckBoxOutlineBlank style={{ fontSize: 18, padding: 10 }} />
         <Refresh style={{ fontSize: 18, padding: 10 }} />

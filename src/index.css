@@ -187,6 +187,7 @@ code {
   flex: 1 0 80%;
   background-color: #f5f5f5;
   flex-direction: row;
+  transition: 0.5s all;
 }
 
 .header {
@@ -364,6 +365,7 @@ code {
   color: rgba(0, 0, 0, 0.546);
   font-size: 10px;
   padding: 10px;
+  transition: 0.5s all;
 }
 
 .email-container {
@@ -444,7 +446,7 @@ code {
   display: flexbox;
   padding: 10px;
   color: rgba(0, 0, 0, 0.567);
-  flex: 1 0 50%;
+  width: 500px;
   font-size: 14px;
   font-weight: 600;
   color: black;
@@ -452,6 +454,13 @@ code {
   text-overflow: ellipsis;
   white-space: nowrap;
   margin: 0px 70px 0px 0px;
+}
+
+.email-content span {
+  display: flexbox;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .time-stamp {
@@ -463,3 +472,88 @@ code {
 }
 
 /* ---------------- email --------------- */
+
+.email-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+}
+
+.email-profile-pic-container {
+  display: flex;
+  flex: 0 0 1%;
+}
+
+.email-profile-pic-container img {
+  height: 44px;
+  width: 44px;
+  border-radius: 50%;
+}
+
+.sender-info {
+  display: flex;
+  flex: 1 0 50%;
+  padding-left: 7px;
+  flex-direction: column;
+}
+
+.to-me span {
+  display: flex;
+  align-items: center;
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.448);
+
+}
+
+.sender-email {
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.448);
+  ;
+}
+
+.sender-email span {
+  font-weight: 600;
+  font-size: 14px;
+  color: black;
+  margin-right: 5px;
+}
+
+.email-time-span {
+  display: flex;
+  flex-direction: row;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.email-right-options {
+  display: flex;
+  flex-direction: row;
+  color: rgba(0, 0, 0, 0.546);
+}
+
+.email-subject {
+  display: flexbox;
+  font-weight: 400;
+  font-size: 23px;
+  padding: 10px;
+  width: 700px;
+  margin: 0px 52px;
+  align-items: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.email-message-container {
+  display: flex;
+  padding: 10px;
+  margin: 0px 50px;
+  font-size: 14px;
+  display: flex;
+  white-space: wrap;
+}
+
+.feed-header-row :hover {
+  cursor: pointer;
+}
