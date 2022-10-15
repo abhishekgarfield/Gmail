@@ -20,8 +20,8 @@ const Homescreen = () => {
         <Header />
         <div className="feed-section">
           {!currentstate && <Sidebar />}
-          {!showEmail &&<Feed />}
-          {showEmail &&<Email />}
+          {!showEmail && <Feed />}
+          {showEmail && <Email />}
         </div>
       </div>
     </div>
