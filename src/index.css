@@ -199,10 +199,10 @@ code {
 .feed-container {
   display: flex;
   flex: 1 0 70%;
-  flex-direction: row;
+  flex-direction: column;
   background-color: white;
   border-radius: 15px;
-  margin: 0px 15px 15px 10px;
+  margin: 0px 15px 15px 5px;
 }
 
 
@@ -355,3 +355,111 @@ code {
   height: 100%;
   align-items: center;
 }
+
+/* ---------------- Feed-container ----------------- */
+
+.feed-header-row {
+  display: flex;
+  flex-direction: row;
+  color: rgba(0, 0, 0, 0.546);
+  font-size: 10px;
+  padding: 10px;
+}
+
+.email-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.feed-header-row :hover {
+  background-color: rgba(211, 211, 211, 0.543);
+  border-radius: 50%;
+}
+
+.feed-email-headers {
+  display: flex;
+
+  flex-direction: row;
+}
+
+.feed-email-headers-options {
+  display: flex;
+  padding: 17px 20px;
+  flex: 0 0 20%;
+  font-weight: 500;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.567);
+  border-bottom: 4px solid transparent
+}
+
+.feed-email-headers-options:hover {
+  cursor: pointer;
+  background-color: rgba(211, 211, 211, 0.276);
+}
+
+.feed-email-headers-options span {
+  display: flex;
+
+}
+
+.feed-email-headers-options.active {
+  color: #1a73e8;
+  border-bottom: 4px solid #1a73e8;
+}
+
+/* ------------------ email-row ------------- */
+
+.email-card {
+  display: flex;
+  color: rgba(0, 0, 0, 0.288);
+  border: 1px solid transparent;
+
+  border-top: 1px solid rgba(0, 0, 0, 0.24);
+  align-items: center;
+  padding: 0px 20px;
+}
+
+.email-card:hover {
+  border: 1px solid lightgrey;
+  box-shadow: 0px 1px 10px 0.5px;
+  cursor: pointer;
+}
+
+.starters {
+  display: flex;
+  flex-direction: row;
+  flex: 0 0 9%;
+}
+
+.sender-name {
+  display: flex;
+  color: rgba(0, 0, 0, 0.567);
+  flex: 0 0 18%;
+  font-weight: 600;
+  font-size: 14px;
+  color: black;
+}
+
+.email-content {
+  display: flexbox;
+  padding: 10px;
+  color: rgba(0, 0, 0, 0.567);
+  flex: 1 0 50%;
+  font-size: 14px;
+  font-weight: 600;
+  color: black;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 0px 70px 0px 0px;
+}
+
+.time-stamp {
+  display: flex;
+  color: rgba(0, 0, 0, 0.567);
+  flex: 0 -1 15%;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ---------------- email --------------- */
