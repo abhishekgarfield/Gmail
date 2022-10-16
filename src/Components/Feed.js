@@ -10,7 +10,9 @@ import {
 import { useDispatch } from "react-redux";
 import { setemaildata, setIsselected } from "../Reducers/showEmail";
 import Emailrow from "./Emailrow";
-
+const getEmails =()=>{
+  
+}
 const emails = [
   {
     sender_user_id: 1,

@@ -24,6 +24,15 @@ const Homescreen = () => {
         dispatch(addUser(data));
       });
   };
+  const getEmails =()=>{
+    fetch(`http://localhost:8000/getuser/?user_id=${user_id}`)
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      dispatch(addUser(data));
+    });
+  }
   const currentstate = useSelector((state) => {
     return state.hidoptions.hidden;
   });
@@ -42,6 +51,7 @@ const Homescreen = () => {
   }, 2000);
   useEffect(() => {
     getUser();
+    getEmails();
   }, []);
   return (
     <div className="homepage-container">
