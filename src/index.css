@@ -596,18 +596,20 @@ code {
 .composemessage-form {
   display: flex;
   flex-direction: column;
-  flex: 1 0  50%;
+  flex: 1 0 50%;
   padding: 10px;
   font-size: 14px;
 }
-.composemessage-form input{
+
+.composemessage-form input {
   outline: none;
   border: none;
   padding: 10px;
   font-size: 16px;
   border-bottom: 1px solid lightgrey;
 }
-.composemessage-form  textarea{
+
+.composemessage-form textarea {
   display: flex;
   outline: none;
   border: none;
@@ -621,43 +623,49 @@ code {
   align-items: center;
   flex-direction: row;
   font-size: 14px;
-  padding: 10px; 
+  padding: 10px;
   color: #202124;
 }
-.sendemail{
+
+.sendemail {
   padding: 8px 40px;
   color: white;
   font-weight: 500;
   background-color: #1a73e8;
   border-radius: 17px;
-  
- 
+
+
 }
-.composemessage-header-right-option :hover{
-background-color: lightgray;
-border-radius: 5px;
-cursor: pointer;
+
+.composemessage-header-right-option :hover {
+  background-color: lightgray;
+  border-radius: 5px;
+  cursor: pointer;
 }
-.composemessage-container.maximize{
+
+.composemessage-container.maximize {
   width: 80%;
   height: 80vh;
-  top:0;
+  top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   margin: auto;
   box-shadow: 0px 0px 100px 1000px rgba(0, 0, 0, 0.351);
 }
-.composemessage-container.minimize{
+
+.composemessage-container.minimize {
   height: fit-content;
   width: 20%;
   bottom: 0;
   margin-right: 70px;
 }
-.composemessage-container.minimize > *{
+
+.composemessage-container.minimize>* {
   display: none;
 }
-.composemessage-container.minimize .composemessage-header{
+
+.composemessage-container.minimize .composemessage-header {
   display: flex;
- 
+
 }
