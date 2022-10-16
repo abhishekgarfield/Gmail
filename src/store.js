@@ -11,7 +11,7 @@ const Store = configureStore({
     loader: loaderSlice,
     hidoptions: hideOptions,
     showemail: showEmail,
-    compsemessage:Composemessage
+    composemessage:Composemessage
   },
 });
 

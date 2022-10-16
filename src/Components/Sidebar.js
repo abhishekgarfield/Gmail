@@ -10,8 +10,11 @@ import {
   Star,
 } from "@material-ui/icons";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setIsHiddden } from "../Reducers/Compose";
 
 const Sidebar = () => {
+  const dispatch=useDispatch();
   const [isSelected, setisselected] = useState(true);
   const chkActive = (e) => {
     console.log("helllo");
@@ -23,7 +26,10 @@ const Sidebar = () => {
   };
   return (
     <div className="sidebar-container">
-      <div className="sidebar-Compose-button">
+      <div className="sidebar-Compose-button" onClick={()=>{
+        dispatch(setIsHiddden(true));
+        console.log("here");
+      }}>
         <Create style={{ marginRight: 8, fontSize: 22 }} />
         <span>Compose</span>
       </div>
