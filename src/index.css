@@ -557,3 +557,12 @@ code {
 .feed-header-row :hover {
   cursor: pointer;
 }
+/* --------------------- compose message ----------------- */
+
+.composemessage-container{
+  display: flex;
+  height: 10vh;
+  width: 20%;
+  position: absolute;
+  background-color: red;
+}
