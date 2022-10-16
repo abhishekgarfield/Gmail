@@ -466,7 +466,7 @@ code {
 .time-stamp {
   display: flex;
   color: rgba(0, 0, 0, 0.567);
-  flex: 0 -1 15%;
+  flex: 0 0 15%;
   font-size: 14px;
   font-weight: 600;
 }
@@ -628,13 +628,16 @@ code {
 }
 
 .sendemail {
-  padding: 8px 40px;
+  padding: 10px 40px;
   color: white;
   font-weight: 500;
   background-color: #1a73e8;
   border-radius: 17px;
 
 
+}
+.sendemail:hover{
+  cursor: pointer;
 }
 
 .composemessage-header-right-option :hover {
@@ -668,4 +671,26 @@ code {
 .composemessage-container.minimize .composemessage-header {
   display: flex;
 
+}
+.messaege-concet{
+  display: flex;
+  width: 20%;
+  flex-direction: row;
+  background-color: black;
+  position: absolute;
+  color: white;
+  bottom: 10px;
+  justify-content: space-between;
+  padding: 10px 11px 10px 17px;
+  left: 50px;
+  align-items: center;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 600;
+  
+}
+.messaege-concet :hover{
+  background-color: rgba(211, 211, 211, 0.333);
+  border-radius: 50%;
+  cursor: pointer;
 }

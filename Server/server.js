@@ -80,3 +80,41 @@ app.post("/signin", async (req, res) => {
     res.status(403).json("User doesn't exist ! please signup ");
   }
 });
+
+app.post("/sendemail", async (req, res) => {
+  console.log("addemail");
+  const email = req.body;
+
+  const senitizedEmail = email.recievers_email.toLowerCase();
+  const collection = database.collection("users");
+  console.log(senitizedEmail);
+  const reciever = await collection.findOne({ email: { $eq: senitizedEmail } });
+  console.log(reciever);
+  const id = v4();
+  if (reciever) {
+    const senitizedEmail = {
+      id: id,
+      sender_user_id: email.sender_user_id,
+      recievers_user_id: reciever.user_id,
+      recievers_email: reciever.email,
+      sender_name: email.sender_name,
+      email_content: email.email_content,
+      subject: email.subject,
+      timestamp: email.timestamp,
+    };
+    const collec = database.collection("email");
+    const user = await collec.insertOne(senitizedEmail);
+    console.log(user);
+    return res.status(200).json("done");
+  } else {
+    return res.status(403).json("Email id doesnt exist !");
+  }
+});
+
+app.get("/getuser", async (req, res) => {
+  console.log("getuser");
+  const { user_id } = req.query;
+  const collection = database.collection("users");
+  const user = await collection.findOne({ user_id: user_id });
+  res.send(user);
+});

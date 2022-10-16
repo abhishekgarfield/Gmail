@@ -3,6 +3,8 @@ import {
   Close,
   Edit,
   EmojiEmotions,
+  Error,
+  HelpOutline,
   Image,
   LinkOffOutlined,
   Lock,
@@ -11,15 +13,62 @@ import {
   OpenInNewSharp,
   TextFormat,
 } from "@material-ui/icons";
+import { useEffect, useState } from "react";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setIsHiddden } from "../Reducers/Compose";
+import { setIssent } from "../Reducers/sentconfirmation";
 
 const Composemessage = () => {
-  const minimizer = document.getElementsByClassName("maximize");
-
-  /* minimizer?.addEventListener(onclick,*/
   const dispatch = useDispatch();
+  const [error, setError] = useState(null);
+  const user = useSelector((state) => {
+    return state.userreducer.user;
+  });
+  const [email, setEmail] = useState({
+    sender_user_id: user.user_id,
+    recievers_user_id: "",
+    recievers_email: "",
+    sender_name: user.name,
+    email_content: "",
+    subject: "",
+    timestamp: new Date().toDateString(),
+  });
+  const handleChange = (e) => {
+    setEmail({ ...email, [e.target.name]: e.target.value });
+  };
+  const handleSubmit = () => {
+    if (
+      email?.subject?.length < 1 ||
+      email?.recievers_email?.length < 1 ||
+      email?.email_content?.length < 1 ||
+      !email
+    ) {
+      return setError(`Fields should not be empty`);
+    } else {
+      setError(null);
+      const url = `http://localhost:8000/sendemail`;
+      fetch(url, {
+        method: "Post",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify(email),
+      }).then((res) => {
+        if (res.status == 403) {
+          res.json().then((data) => {
+            setError(data);
+          });
+        }
+        if (res.status == 200) {
+          res.json().then((data) => {
+            setError("");
+            dispatch(setIssent(true));
+            dispatch(setIsHiddden(false));
+          });
+        }
+      });
+    }
+  };
+
   return (
     <div className="composemessage-container">
       <div className="composemessage-header">
@@ -54,12 +103,47 @@ const Composemessage = () => {
         </div>
       </div>
       <div className="composemessage-form">
-        <input type="text" placeholder="Email to" name="sender-email" />
-        <input type="text" placeholder="Subject" name="subject" />
-        <textarea name="email" />
+        <input
+          type="text"
+          placeholder="Email to"
+          name="recievers_email"
+          value={email.recievers_email}
+          onChange={(e) => {
+            handleChange(e);
+          }}
+        />
+        <input
+          type="text"
+          placeholder="Subject"
+          name="subject"
+          value={email.subject}
+          onChange={(e) => {
+            handleChange(e);
+          }}
+        />
+        <textarea
+          name="email_content"
+          value={email.email_content}
+          onChange={(e) => {
+            handleChange(e);
+          }}
+        />
       </div>
+      {error && (
+        <p className="error-show">
+          <Error style={{ fontSize: 18, marginRight: 2, marginLeft: 17 }} />
+          {error}
+        </p>
+      )}
       <div className="composemessage-footer">
-        <div className="sendemail">Send</div>
+        <div
+          className="sendemail"
+          onClick={() => {
+            handleSubmit();
+          }}
+        >
+          Send
+        </div>
         <TextFormat
           style={{
             fontSize: 18,

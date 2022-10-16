@@ -4,6 +4,7 @@ import loaderSlice from "./Reducers/loaderSlice";
 import showEmail from "./Reducers/showEmail";
 import userSlice from "./Reducers/userSlice";
 import Composemessage from "./Reducers/Compose"
+import sentconfirmation from "./Reducers/sentconfirmation";
 
 const Store = configureStore({
   reducer: {
@@ -11,7 +12,8 @@ const Store = configureStore({
     loader: loaderSlice,
     hidoptions: hideOptions,
     showemail: showEmail,
-    composemessage:Composemessage
+    composemessage:Composemessage,
+    sent:sentconfirmation
   },
 });
 
