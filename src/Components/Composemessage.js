@@ -1,16 +1,11 @@
-import { Link } from "@material-ui/core";
 import {
   AttachFile,
   Close,
   Edit,
   EmojiEmotions,
-  EmojiEmotionsRounded,
-  ExpandMore,
-  ExposurePlus1,
   Image,
   LinkOffOutlined,
   Lock,
-  Maximize,
   Minimize,
   MoreVert,
   OpenInNewSharp,
@@ -22,7 +17,7 @@ import { setIsHiddden } from "../Reducers/Compose";
 
 const Composemessage = () => {
   const minimizer = document.getElementsByClassName("maximize");
-  console.log(minimizer);
+
   /* minimizer?.addEventListener(onclick,*/
   const dispatch = useDispatch();
   return (
@@ -30,15 +25,16 @@ const Composemessage = () => {
       <div className="composemessage-header">
         <span>New message</span>
         <div className="composemessage-header-right-option">
-          <Minimize style={{ fontSize: 18, padding: 3 }} onClick={()=>{
-            console.log("dsdaHJDVgadsva")
-              
+          <Minimize
+            style={{ fontSize: 18, padding: 3 }}
+            onClick={() => {
               const messagebox = document.getElementsByClassName(
                 "composemessage-container"
               );
               messagebox[0].classList.toggle("minimize");
-              messagebox[0].classList.remove("maximize")
-          }}/>
+              messagebox[0].classList.remove("maximize");
+            }}
+          />
           <OpenInNewSharp
             style={{ fontSize: 18, padding: 3 }}
             onClick={() => {
@@ -46,8 +42,7 @@ const Composemessage = () => {
                 "composemessage-container"
               );
               messagebox[0].classList.toggle("maximize");
-              messagebox[0].classList.remove("minimize")
-              console.log("in emisma");
+              messagebox[0].classList.remove("minimize");
             }}
           />
           <Close
