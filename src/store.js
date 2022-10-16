@@ -3,6 +3,7 @@ import hideOptions from "./Reducers/hideOptions";
 import loaderSlice from "./Reducers/loaderSlice";
 import showEmail from "./Reducers/showEmail";
 import userSlice from "./Reducers/userSlice";
+import Composemessage from "./Reducers/Compose"
 
 const Store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const Store = configureStore({
     loader: loaderSlice,
     hidoptions: hideOptions,
     showemail: showEmail,
+    compsemessage:Composemessage
   },
 });
 
