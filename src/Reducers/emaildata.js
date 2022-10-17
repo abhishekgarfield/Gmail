@@ -9,8 +9,9 @@ const emails = createSlice({
   initialState,
   reducers: {
     setemailsdata: function (state, action) {
-
-        state.emails=  action.payload.sort((a,b)=>a.timestamp.localeCompare(b.timestamp));
+        console.log(action.payload);
+        state.emails=  action.payload.sort((a, b) => b.timestamp.localeCompare(a.timestamp));
+        
     
     },
     removeemailsdata(state, action) {

@@ -43,7 +43,8 @@ const Emailrow = ({ email }) => {
           e.target.classList.contains("sender-name") ||
           e.target.classList.contains("email-content") ||
           e.target.classList.contains("time-stamp") ||
-          e.target.classList.contains("content")
+          e.target.classList.contains("content")||
+          e.target.classList.contains("helllo")
         ) {
           dispatch(setemaildata(email));
           dispatch(setIsselected(true));
@@ -83,7 +84,7 @@ const Emailrow = ({ email }) => {
       </div>
       <div className="sender-name">{email.sender_name}</div>
       <div className="email-content">
-        <span>{`${email.subject}`}</span>
+        <span className="helllo">{`${email.subject}`}</span>
         <span
           className="content"
           style={{ fontWeight: 400 }}
