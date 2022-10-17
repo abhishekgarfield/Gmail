@@ -4,7 +4,6 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const v4 = require("uuid").v4;
 const cors = require("cors");
-const { CompassCalibrationOutlined } = require("@material-ui/icons");
 require("dotenv").config();
 const port = process.env.PORT || 8000;
 const uri =
