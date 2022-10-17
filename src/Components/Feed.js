@@ -7,48 +7,30 @@ import {
   People,
   Refresh,
 } from "@material-ui/icons";
-import { useDispatch } from "react-redux";
-import { setemaildata, setIsselected } from "../Reducers/showEmail";
+import { useDispatch, useSelector } from "react-redux";
+import { setemailsdata } from "../Reducers/emaildata";
 import Emailrow from "./Emailrow";
-const getEmails =()=>{
-  
-}
-const emails = [
-  {
-    sender_user_id: 1,
-    recievers_user_id: 2,
-    sender_name: "Abhishek",
-    email_content: "hi abhishek how r uh ? hi abhishek how r uh  hi abhishek how r uh  hi abhishek how r uh hi abhishek how r uh  r uh ? hi abhishek how r uh  hi abhishek how r uh  hi abhishek how r uh hi abhishek how r uh",
-    subject: "hi buddy  ",
-    timestamp: new Date().toDateString(),
-  },
-  {
-    sender_user_id: 1,
-    recievers_user_id: 2,
-    sender_name: "abhishek",
-    email_content: "hi abhishek how r uh ?",
-    subject: "hi buddy",
-    timestamp: new Date().toDateString(),
-  },
-  {
-    sender_user_id: 1,
-    recievers_user_id: 2,
-    sender_name: "abhishek",
-    email_content: "hi abhishek how r uh ?",
-    subject: "hi buddy",
-    timestamp: new Date().toDateString(),
-  },
-  {
-    sender_user_id: 1,
-    recievers_user_id: 2,
-    sender_name: "abhishek",
-    email_content: "hi abhishek how r uh ?",
-    subject: "hi buddy",
-    timestamp: new Date().toDateString(),
-  },
-];
+
+
 const Feed = () => {
-    const dispatch=useDispatch();
+  const user_id =useSelector((state)=>{
+    return state.userreducer.user.user_id
+  })
+  const emails =useSelector((state)=>{
+    return state.emails.emails
+  })
+  const dispatch=useDispatch();
+  const getEmails = () => {
+    console.log("refresh")
+    fetch(`http://localhost:8000/getinbox/?user_id=${user_id}`)
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        dispatch(setemailsdata(data));
+      });
+  };
+   
   const chkActive = (e) => {
     console.log("helllo");
     var el = document.querySelectorAll(".feed-email-headers-options");
@@ -62,7 +44,9 @@ const Feed = () => {
         
       <div className="feed-header-row">
         <CheckBoxOutlineBlank style={{ fontSize: 18, padding: 10 }} />
-        <Refresh style={{ fontSize: 18, padding: 10 }} />
+        <Refresh style={{ fontSize: 18, padding: 10 }} onClick={()=>{
+          getEmails();
+        }}/>
         <MoreVert style={{ fontSize: 18, padding: 10 }} />
       </div>
       <div className="email-container">

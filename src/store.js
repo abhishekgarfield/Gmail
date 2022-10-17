@@ -5,6 +5,7 @@ import showEmail from "./Reducers/showEmail";
 import userSlice from "./Reducers/userSlice";
 import Composemessage from "./Reducers/Compose"
 import sentconfirmation from "./Reducers/sentconfirmation";
+import emails from "./Reducers/emaildata";
 
 const Store = configureStore({
   reducer: {
@@ -13,7 +14,8 @@ const Store = configureStore({
     hidoptions: hideOptions,
     showemail: showEmail,
     composemessage:Composemessage,
-    sent:sentconfirmation
+    sent:sentconfirmation,
+    emails:emails
   },
 });
 

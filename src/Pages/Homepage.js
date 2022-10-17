@@ -10,6 +10,7 @@ import { useCookies } from "react-cookie";
 import { addUser } from "../Reducers/userSlice";
 import { setIssent } from "../Reducers/sentconfirmation";
 import { Close } from "@material-ui/icons";
+import { setemailsdata } from "../Reducers/emaildata";
 
 const Homescreen = () => {
   const dispatch = useDispatch();
@@ -24,15 +25,15 @@ const Homescreen = () => {
         dispatch(addUser(data));
       });
   };
-  const getEmails =()=>{
-    fetch(`http://localhost:8000/getuser/?user_id=${user_id}`)
-    .then((res) => {
-      return res.json();
-    })
-    .then((data) => {
-      dispatch(addUser(data));
-    });
-  }
+  const getEmails = () => {
+    fetch(`http://localhost:8000/getinbox/?user_id=${user_id}`)
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        dispatch(setemailsdata(data));
+      });
+  };
   const currentstate = useSelector((state) => {
     return state.hidoptions.hidden;
   });
@@ -45,10 +46,13 @@ const Homescreen = () => {
   const sentconfirmation = useSelector((state) => {
     return state.sent.sent;
   });
+  if(sentconfirmation)
+  {
   setTimeout(() => {
     console.log("in timer");
     dispatch(setIssent(false));
-  }, 2000);
+  }, 6000);
+}
   useEffect(() => {
     getUser();
     getEmails();

@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const v4 = require("uuid").v4;
 const cors = require("cors");
+const { CompassCalibrationOutlined } = require("@material-ui/icons");
 require("dotenv").config();
 const port = process.env.PORT || 8000;
 const uri =
@@ -117,4 +118,13 @@ app.get("/getuser", async (req, res) => {
   const collection = database.collection("users");
   const user = await collection.findOne({ user_id: user_id });
   res.send(user);
+});
+app.get("/getinbox", async (req, res) => {
+  console.log("inbox emails");
+  const { user_id } = req.query;
+  console.log(user_id)
+  const collection = database.collection("email");
+  const emails = await collection.find({ recievers_user_id: user_id }).toArray();
+  res.send(emails);
+  console.log(emails)
 });
