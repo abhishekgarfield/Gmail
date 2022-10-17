@@ -16,7 +16,7 @@ const Email = () => {
   const dispatch = useDispatch();
   const [user, setUser] = useState(null);
   const getUser = () => {
-    fetch(`http://localhost:8000/getuser/?user_id=${data.sender_user_id}`)
+    fetch(`https://gmailgarfield.herokuapp.com/getuser/?user_id=${data.sender_user_id}`)
       .then((res) => {
         return res.json();
       })
@@ -56,7 +56,7 @@ const Email = () => {
         <div className="sender-info">
           <div className="sender-email">
             <span>{data.sender_name}</span>
-            {`<${data.recievers_email}>`}
+            {`<${user?.email}>`}
           </div>
           <div className="to-me">
             <span>

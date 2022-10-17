@@ -11,8 +11,10 @@ const Authscreen = () => {
   const isloading = useSelector((state) => {
     return state.loader.isloading;
   });
+ 
   const [cookies, setCookie, removeCookie] = useCookies(`[user]`);
   const [islogin, setislogin] = useState(true);
+  
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -48,7 +50,7 @@ const Authscreen = () => {
       } else {
         setError(null);
         dispatch(setIsloading(true));
-        const url = `http://localhost:8000/${islogin ? "signin" : "signup"}`;
+        const url = `https://gmailgarfield.herokuapp.com/${islogin ? "signin" : "signup"}`;
         fetch(url, {
           method: "Post",
           headers: { "Content-type": "application/json" },

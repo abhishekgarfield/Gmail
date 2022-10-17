@@ -47,7 +47,7 @@ const Composemessage = () => {
       return setError(`Fields should not be empty`);
     } else {
       setError(null);
-      const url = `http://localhost:8000/sendemail`;
+      const url = `https://gmailgarfield.herokuapp.com/sendemail`;
       fetch(url, {
         method: "Post",
         headers: { "Content-type": "application/json" },

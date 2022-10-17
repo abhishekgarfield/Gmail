@@ -15,7 +15,7 @@ const Emailrow = ({ email }) => {
   const dispatch = useDispatch();
   const addtype = (type) => {
     fetch(
-      `http://localhost:8000/addtype/?type=${type}&user_id=${user_id}&message_id=${email.id}`
+      `https://gmailgarfield.herokuapp.com/addtype/?type=${type}&user_id=${user_id}&message_id=${email.id}`
     )
       .then((res) => {
         {
@@ -27,7 +27,7 @@ const Emailrow = ({ email }) => {
       });
   };
   const getUser = () => {
-    fetch(`http://localhost:8000/getuser/?user_id=${user_id}`)
+    fetch(`https://gmailgarfield.herokuapp.com/getuser/?user_id=${user_id}`)
       .then((res) => {
         return res.json();
       })

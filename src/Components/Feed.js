@@ -21,7 +21,7 @@ const Feed = () => {
   });
   const dispatch = useDispatch();
   const getEmails = () => {
-    fetch(`http://localhost:8000/getinbox/?user_id=${user_id}`)
+    fetch(`https://gmailgarfield.herokuapp.com/getinbox/?user_id=${user_id}`)
       .then((res) => {
         return res.json();
       })
