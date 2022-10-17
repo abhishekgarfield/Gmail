@@ -438,12 +438,14 @@ code {
   flex-direction: row;
   flex: 0 0 9%;
 }
-.starters *{
+
+.starters * {
   padding: 3px;
 }
-.starters :hover{
-background-color: rgba(211, 211, 211, 0.459);
-border-radius: 50%;
+
+.starters :hover {
+  background-color: rgba(211, 211, 211, 0.459);
+  border-radius: 50%;
 }
 
 .sender-name {
@@ -652,7 +654,8 @@ border-radius: 50%;
 
 
 }
-.sendemail:hover{
+
+.sendemail:hover {
   cursor: pointer;
 }
 
@@ -688,7 +691,8 @@ border-radius: 50%;
   display: flex;
 
 }
-.messaege-concet{
+
+.messaege-concet {
   display: flex;
   width: 20%;
   flex-direction: row;
@@ -703,10 +707,42 @@ border-radius: 50%;
   border-radius: 5px;
   font-size: 15px;
   font-weight: 600;
-  
+
 }
-.messaege-concet :hover{
+
+.messaege-concet :hover {
   background-color: rgba(211, 211, 211, 0.333);
   border-radius: 50%;
+  cursor: pointer;
+}
+
+/* ------------------ logout --------- */
+
+.logout-container {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.395);
+  transform: translate(-20%, 100%);
+  padding: 10px;
+
+  border-radius: 3px;
+
+}
+
+.logout {
+  background-color: #1a73e8;
+  color: white;
+  padding: 5px 15px;
+  font-weight: 600;
+  border-radius: 3px;
+}
+
+.logout:hover {
+  cursor: pointer;
+}
+
+.extra-options img:hover {
   cursor: pointer;
 }

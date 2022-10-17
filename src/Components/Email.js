@@ -16,7 +16,7 @@ const Email = () => {
   const dispatch = useDispatch();
   const [user,setUser]=useState(null); 
   const getUser = () => {
-    fetch(`http://localhost:8000/getuser/?user_id=${data.recievers_user_id}`)
+    fetch(`http://localhost:8000/getuser/?user_id=${data.sender_user_id}`)
       .then((res) => {
         return res.json();
       })

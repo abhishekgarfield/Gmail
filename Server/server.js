@@ -42,12 +42,13 @@ app.post("/signup", async (req, res) => {
     email: senitizedEmail,
     password: hashedPassword,
     profile_pic: user.profile_pic,
+    important: [],
+    starred: [],
   };
   try {
     const collection = database.collection("users");
     const findUser = await collection.findOne({ email: senitizedEmail });
     if (findUser) {
-      console.log(findUser);
       return res.status(403).json("User already exists");
     } else {
       const addUser = await collection.insertOne(senitizedUser);
@@ -88,9 +89,8 @@ app.post("/sendemail", async (req, res) => {
 
   const senitizedEmail = email.recievers_email.toLowerCase();
   const collection = database.collection("users");
-  console.log(senitizedEmail);
   const reciever = await collection.findOne({ email: { $eq: senitizedEmail } });
-  console.log(reciever);
+
   const id = v4();
   if (reciever) {
     const senitizedEmail = {
@@ -105,7 +105,7 @@ app.post("/sendemail", async (req, res) => {
     };
     const collec = database.collection("email");
     const user = await collec.insertOne(senitizedEmail);
-    console.log(user);
+
     return res.status(200).json("done");
   } else {
     return res.status(403).json("Email id doesnt exist !");
@@ -122,31 +122,27 @@ app.get("/getuser", async (req, res) => {
 app.get("/getinbox", async (req, res) => {
   console.log("inbox emails");
   const { user_id } = req.query;
-  console.log(user_id);
   const collection = database.collection("email");
   const emails = await collection
     .find({ recievers_user_id: user_id })
     .toArray();
   res.send(emails);
-  console.log(emails);
 });
 app.get("/getemails", async (req, res) => {
   console.log("emails");
   const { user_id, type } = req.query;
   const collection = database.collection("users");
-  console.log(type);
   if (type == "important") {
-    console.log("here");
     const importantMessageids = await collection
       .find({ user_id: user_id })
-      .project({ important: 1, _id: 0 }).toArray();
-
-    console.log(importantMessageids[0].important);
+      .project({ important: 1, _id: 0 })
+      .toArray();
     if (importantMessageids) {
-      const filtered = importantMessageids[0].important?.map(({ message_id }) => {
-        return message_id;
-      });
-      console.log(filtered);
+      const filtered = importantMessageids[0].important?.map(
+        ({ message_id }) => {
+          return message_id;
+        }
+      );
       const pipeline = [
         {
           $match: {
@@ -158,20 +154,17 @@ app.get("/getemails", async (req, res) => {
       ];
       const emailcollection = database.collection("email");
       const emails = await emailcollection.aggregate(pipeline).toArray();
-      return res.status(200).json(emails)
+      return res.status(200).json(emails);
     }
   } else if (type == "starred") {
     const importantMessageids = await collection
       .find({ user_id: user_id })
-      .project({ starred: 1, _id: 0 }).toArray();
-
-    console.log(importantMessageids[0].starred);
+      .project({ starred: 1, _id: 0 })
+      .toArray();
     if (importantMessageids) {
       const filtered = importantMessageids[0].starred.map(({ message_id }) => {
         return message_id;
       });
-      console.log(filtered)
-      console.log(filtered);
       const pipeline = [
         {
           $match: {
@@ -183,29 +176,35 @@ app.get("/getemails", async (req, res) => {
       ];
       const emailcollection = database.collection("email");
       const emails = await emailcollection.aggregate(pipeline).toArray();
-      return res.status(200).json(emails)
-  }}
-  else if (type == "sent") {
-      const emailcollection = database.collection("email");
-      const emails = await emailcollection.find({sender_user_id:user_id}).toArray();
-      return res.status(200).json(emails)
+      return res.status(200).json(emails);
+    }
+  } else if (type == "sent") {
+    const emailcollection = database.collection("email");
+    const emails = await emailcollection
+      .find({ sender_user_id: user_id })
+      .toArray();
+    return res.status(200).json(emails);
   } else {
     return res.status(403).json("type-error");
   }
 });
 
-app.get("/addtype",async(req,res)=>{
-  console.log("in add type")
-  const {type, user_id,message_id}=req.query;
+app.get("/addtype", async (req, res) => {
+  console.log("in add type");
+  const { type, user_id, message_id } = req.query;
   const collection = database.collection("users");
-  if(type=="star")
-  {
-    const result=collection.updateOne({user_id:user_id},{$push:{"starred": {message_id:message_id}}});
+  if (type == "star") {
+    const result = collection.updateOne(
+      { user_id: user_id },
+      { $push: { starred: { message_id: message_id } } }
+    );
     res.status(200).json("done");
   }
-  if(type=="important")
-  {
-    const result=collection.updateOne({user_id:user_id},{$push:{"important": {message_id:message_id}}});
+  if (type == "important") {
+    const result = collection.updateOne(
+      { user_id: user_id },
+      { $push: { important: { message_id: message_id } } }
+    );
     res.status(200).json("done");
   }
-})
+});
