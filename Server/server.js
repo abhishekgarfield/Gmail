@@ -170,6 +170,7 @@ app.get("/getemails", async (req, res) => {
       const filtered = importantMessageids[0].starred.map(({ message_id }) => {
         return message_id;
       });
+      console.log(filtered)
       console.log(filtered);
       const pipeline = [
         {
@@ -191,8 +192,20 @@ app.get("/getemails", async (req, res) => {
   } else {
     return res.status(403).json("type-error");
   }
-
-  // const emails = await collection.find({ recievers_user_id: user_id }).toArray();
-  //res.send(emails);
-  console.log(user_id);
 });
+
+app.get("/addtype",async(req,res)=>{
+  console.log("in add type")
+  const {type, user_id,message_id}=req.query;
+  const collection = database.collection("users");
+  if(type=="star")
+  {
+    const result=collection.updateOne({user_id:user_id},{$push:{"starred": {message_id:message_id}}});
+    res.status(200).json("done");
+  }
+  if(type=="important")
+  {
+    const result=collection.updateOne({user_id:user_id},{$push:{"important": {message_id:message_id}}});
+    res.status(200).json("done");
+  }
+})

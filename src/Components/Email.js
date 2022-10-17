@@ -8,17 +8,29 @@ import {
   Refresh,
   Star,
 } from "@material-ui/icons";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setemaildata, setIsselected } from "../Reducers/showEmail";
 
 const Email = () => {
   const dispatch = useDispatch();
-  const user = useSelector((state) => {
-    return state.userreducer.user;
-  });
+  const [user,setUser]=useState(null); 
+  const getUser = () => {
+    fetch(`http://localhost:8000/getuser/?user_id=${data.recievers_user_id}`)
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setUser(data);
+      });
+  };
   const data = useSelector((state) => {
     return state.showemail.emailData;
   });
+
+  useEffect(()=>{
+    getUser();
+      },[])
   return (
     <div className="feed-container">
       <div className="feed-header-row">
@@ -39,12 +51,12 @@ const Email = () => {
       </div>
       <div className="email-header">
         <div className="email-profile-pic-container">
-          <img src={user.profile_pic} />
+          <img src={user?.profile_pic} />
         </div>
         <div className="sender-info">
           <div className="sender-email">
             <span>{data.sender_name}</span>
-            {`<${user.email}>`}
+            {`<${data.recievers_email}>`}
           </div>
           <div className="to-me">
             <span>

@@ -422,9 +422,9 @@ code {
   color: rgba(0, 0, 0, 0.288);
   border: 1px solid transparent;
 
-  border-top: 1px solid rgba(0, 0, 0, 0.24);
+  border-top: 1px solid rgba(0, 0, 0, 0.114);
   align-items: center;
-  padding: 0px 20px;
+  padding: 0px 15px;
 }
 
 .email-card:hover {
@@ -457,7 +457,7 @@ border-radius: 50%;
 
 .email-content {
   display: flexbox;
-  padding: 10px;
+  padding: 13px;
   color: rgba(0, 0, 0, 0.567);
   width: 500px;
   font-size: 14px;
@@ -482,6 +482,8 @@ border-radius: 50%;
   flex: 0 0 15%;
   font-size: 14px;
   font-weight: 600;
+
+  justify-content: end;
 }
 
 /* ---------------- email --------------- */
@@ -537,6 +539,7 @@ border-radius: 50%;
   flex-direction: row;
   font-size: 13px;
   font-weight: 500;
+  justify-content: end;
 }
 
 .email-right-options {
