@@ -15,7 +15,7 @@
 
 
 
-## Website : https://netflixgarfield.netlify.app/
+## Website : https://garfieldgmail.netlify.app/
 ## Website demo video : https://youtu.be/4wHwE6MqePU
 
 ### Authscreen 
