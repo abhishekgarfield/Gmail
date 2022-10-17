@@ -257,6 +257,7 @@ code {
 .sidebar-options.active {
   background-color: #d3e3fd;
   color: #202124;
+  font-weight: 700;
 }
 
 .sidebar-options.active:hover {
@@ -436,6 +437,13 @@ code {
   display: flex;
   flex-direction: row;
   flex: 0 0 9%;
+}
+.starters *{
+  padding: 3px;
+}
+.starters :hover{
+background-color: rgba(211, 211, 211, 0.459);
+border-radius: 50%;
 }
 
 .sender-name {

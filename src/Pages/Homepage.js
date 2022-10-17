@@ -55,7 +55,7 @@ const Homescreen = () => {
 }
   useEffect(() => {
     getUser();
-    getEmails();
+    getEmails()
   }, []);
   return (
     <div className="homepage-container">

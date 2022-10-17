@@ -7,15 +7,16 @@ import {
   People,
   Refresh,
 } from "@material-ui/icons";
+import { useCookies } from "react-cookie";
 import { useDispatch, useSelector } from "react-redux";
 import { setemailsdata } from "../Reducers/emaildata";
 import Emailrow from "./Emailrow";
 
 
 const Feed = () => {
-  const user_id =useSelector((state)=>{
-    return state.userreducer.user.user_id
-  })
+  const[cookies,setCookie,removeCookie]=useCookies(`[user]`);
+
+  const user_id =cookies.user_id;
   const emails =useSelector((state)=>{
     return state.emails.emails
   })

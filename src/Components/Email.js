@@ -13,14 +13,9 @@ import { setemaildata, setIsselected } from "../Reducers/showEmail";
 
 const Email = () => {
   const dispatch = useDispatch();
-  const user = {
-    user_id: "8a2fb039-dc1e-49b1-824f-50ccda763f0a",
-    name: "abhishek",
-    email: "abhishek23@gmail.com",
-    password: "$2b$10$SyE3e25i0g0s6Qq3Mf9kTOPZCNox.XtWBf.urN5x35ybOi4xq/XD6",
-    profile_pic:
-      "https://upload.wikimedia.org/wikipedia/commons/a/a3/Vidhyut_%26_Arhaan_at_the_launch_of_%27Big_RTL_Thrill%27_channel.jpg",
-  };
+  const user = useSelector((state) => {
+    return state.userreducer.user;
+  });
   const data = useSelector((state) => {
     return state.showemail.emailData;
   });

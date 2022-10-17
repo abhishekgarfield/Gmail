@@ -122,9 +122,77 @@ app.get("/getuser", async (req, res) => {
 app.get("/getinbox", async (req, res) => {
   console.log("inbox emails");
   const { user_id } = req.query;
-  console.log(user_id)
+  console.log(user_id);
   const collection = database.collection("email");
-  const emails = await collection.find({ recievers_user_id: user_id }).toArray();
+  const emails = await collection
+    .find({ recievers_user_id: user_id })
+    .toArray();
   res.send(emails);
-  console.log(emails)
+  console.log(emails);
+});
+app.get("/getemails", async (req, res) => {
+  console.log("emails");
+  const { user_id, type } = req.query;
+  const collection = database.collection("users");
+  console.log(type);
+  if (type == "important") {
+    console.log("here");
+    const importantMessageids = await collection
+      .find({ user_id: user_id })
+      .project({ important: 1, _id: 0 }).toArray();
+
+    console.log(importantMessageids[0].important);
+    if (importantMessageids) {
+      const filtered = importantMessageids[0].important?.map(({ message_id }) => {
+        return message_id;
+      });
+      console.log(filtered);
+      const pipeline = [
+        {
+          $match: {
+            id: {
+              $in: filtered,
+            },
+          },
+        },
+      ];
+      const emailcollection = database.collection("email");
+      const emails = await emailcollection.aggregate(pipeline).toArray();
+      return res.status(200).json(emails)
+    }
+  } else if (type == "starred") {
+    const importantMessageids = await collection
+      .find({ user_id: user_id })
+      .project({ starred: 1, _id: 0 }).toArray();
+
+    console.log(importantMessageids[0].starred);
+    if (importantMessageids) {
+      const filtered = importantMessageids[0].starred.map(({ message_id }) => {
+        return message_id;
+      });
+      console.log(filtered);
+      const pipeline = [
+        {
+          $match: {
+            id: {
+              $in: filtered,
+            },
+          },
+        },
+      ];
+      const emailcollection = database.collection("email");
+      const emails = await emailcollection.aggregate(pipeline).toArray();
+      return res.status(200).json(emails)
+  }}
+  else if (type == "sent") {
+      const emailcollection = database.collection("email");
+      const emails = await emailcollection.find({sender_user_id:user_id}).toArray();
+      return res.status(200).json(emails)
+  } else {
+    return res.status(403).json("type-error");
+  }
+
+  // const emails = await collection.find({ recievers_user_id: user_id }).toArray();
+  //res.send(emails);
+  console.log(user_id);
 });
