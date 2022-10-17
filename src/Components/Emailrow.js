@@ -11,8 +11,7 @@ const Emailrow = ({ email }) => {
   const user = useSelector((state) => {
     return state.userreducer.user;
   });
-  const user_id = user.user_id;
-  console.log(user);
+  const user_id = user?.user_id;
   const dispatch = useDispatch();
   const addtype = (type) => {
     fetch(`http://localhost:8000/addtype/?type=${type}&user_id=${user_id}&message_id=${email.id}`)
@@ -22,7 +21,6 @@ const Emailrow = ({ email }) => {
         }
       })
       .then((data) => {
-        console.log(data);
         getUser();
       });
   };
@@ -50,7 +48,7 @@ const Emailrow = ({ email }) => {
         <CheckBoxOutlineBlank style={{ marginRight: 5, fontSize: 18 }} />
         <Star
           style={
-            user.starred.some(({ message_id }) => {
+            user?.starred.length>0 && user.starred.some(({ message_id }) => {
               return message_id == email.id;
             })
               ? { marginRight: 5, fontSize: 18, color: "#e5c06a" }
@@ -63,7 +61,7 @@ const Emailrow = ({ email }) => {
         />
         <LabelImportant
           style={
-            user.important.some(({ message_id }) => {
+            user?.important?.length>0 && user.important.some(({ message_id }) => {
               return message_id == email.id;
             })
               ? { marginRight: 5, fontSize: 18, color: "#e5c06a" }

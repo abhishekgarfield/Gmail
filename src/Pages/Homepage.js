@@ -49,7 +49,6 @@ const Homescreen = () => {
   if(sentconfirmation)
   {
   setTimeout(() => {
-    console.log("in timer");
     dispatch(setIssent(false));
   }, 6000);
 }

@@ -23,7 +23,7 @@ const Authscreen = () => {
   const [error, setError] = useState(null);
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
-    console.log(user);
+   
   };
   const handleSubmit = () => {
     if (
@@ -56,7 +56,6 @@ const Authscreen = () => {
         }).then((res) => {
           if (res.status == 403) {
             res.json().then((data) => {
-              console.log(data);
               dispatch(setIsloading(false));
               setError(data);
             });

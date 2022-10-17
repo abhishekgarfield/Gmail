@@ -22,7 +22,6 @@ const Feed = () => {
   })
   const dispatch=useDispatch();
   const getEmails = () => {
-    console.log("refresh")
     fetch(`http://localhost:8000/getinbox/?user_id=${user_id}`)
       .then((res) => {
         return res.json();
@@ -33,7 +32,6 @@ const Feed = () => {
   };
    
   const chkActive = (e) => {
-    console.log("helllo");
     var el = document.querySelectorAll(".feed-email-headers-options");
     for (var i = 0; i < el.length; i++) {
       el[i].classList.remove("active");

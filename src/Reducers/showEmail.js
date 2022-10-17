@@ -10,7 +10,6 @@ const showEmail = createSlice({
   initialState,
   reducers: {
     setIsselected: (state, action) => {
-      console.log(action.payload);
       state.isSelected = action.payload;
     },
     setemaildata: function (state, action) {
