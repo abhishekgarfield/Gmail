@@ -46,15 +46,14 @@ const Homescreen = () => {
   const sentconfirmation = useSelector((state) => {
     return state.sent.sent;
   });
-  if(sentconfirmation)
-  {
-  setTimeout(() => {
-    dispatch(setIssent(false));
-  }, 6000);
-}
+  if (sentconfirmation) {
+    setTimeout(() => {
+      dispatch(setIssent(false));
+    }, 6000);
+  }
   useEffect(() => {
     getUser();
-    getEmails()
+    getEmails();
   }, []);
   return (
     <div className="homepage-container">
