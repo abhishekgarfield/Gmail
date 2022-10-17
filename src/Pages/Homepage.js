@@ -17,7 +17,7 @@ const Homescreen = () => {
   const [cookies, setCookie, removeCookie] = useCookies(`[user]`);
   const user_id = cookies.user_id;
   const getUser = () => {
-    fetch(`http://localhost:8000/getuser/?user_id=${user_id}`)
+    fetch(`https://gmailgarfield.herokuapp.com/getuser/?user_id=${user_id}`)
       .then((res) => {
         return res.json();
       })
@@ -26,7 +26,7 @@ const Homescreen = () => {
       });
   };
   const getEmails = () => {
-    fetch(`http://localhost:8000/getinbox/?user_id=${user_id}`)
+    fetch(`https://gmailgarfield.herokuapp.com/getinbox/?user_id=${user_id}`)
       .then((res) => {
         return res.json();
       })
