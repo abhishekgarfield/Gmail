@@ -12,15 +12,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { setemailsdata } from "../Reducers/emaildata";
 import Emailrow from "./Emailrow";
 
-
 const Feed = () => {
-  const[cookies,setCookie,removeCookie]=useCookies(`[user]`);
+  const [cookies, setCookie, removeCookie] = useCookies(`[user]`);
 
-  const user_id =cookies.user_id;
-  const emails =useSelector((state)=>{
-    return state.emails.emails
-  })
-  const dispatch=useDispatch();
+  const user_id = cookies.user_id;
+  const emails = useSelector((state) => {
+    return state.emails.emails;
+  });
+  const dispatch = useDispatch();
   const getEmails = () => {
     fetch(`http://localhost:8000/getinbox/?user_id=${user_id}`)
       .then((res) => {
@@ -30,7 +29,7 @@ const Feed = () => {
         dispatch(setemailsdata(data));
       });
   };
-   
+
   const chkActive = (e) => {
     var el = document.querySelectorAll(".feed-email-headers-options");
     for (var i = 0; i < el.length; i++) {
@@ -40,12 +39,14 @@ const Feed = () => {
   };
   return (
     <div className="feed-container">
-        
       <div className="feed-header-row">
         <CheckBoxOutlineBlank style={{ fontSize: 18, padding: 10 }} />
-        <Refresh style={{ fontSize: 18, padding: 10 }} onClick={()=>{
-          getEmails();
-        }}/>
+        <Refresh
+          style={{ fontSize: 18, padding: 10 }}
+          onClick={() => {
+            getEmails();
+          }}
+        />
         <MoreVert style={{ fontSize: 18, padding: 10 }} />
       </div>
       <div className="email-container">
@@ -73,7 +74,7 @@ const Feed = () => {
           </div>
         </div>
         {emails?.map((data, index) => {
-         return <Emailrow key={index} email={data} />;
+          return <Emailrow key={index} email={data} />;
         })}
       </div>
     </div>

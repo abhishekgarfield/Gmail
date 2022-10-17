@@ -14,7 +14,7 @@ import { setemaildata, setIsselected } from "../Reducers/showEmail";
 
 const Email = () => {
   const dispatch = useDispatch();
-  const [user,setUser]=useState(null); 
+  const [user, setUser] = useState(null);
   const getUser = () => {
     fetch(`http://localhost:8000/getuser/?user_id=${data.sender_user_id}`)
       .then((res) => {
@@ -28,9 +28,9 @@ const Email = () => {
     return state.showemail.emailData;
   });
 
-  useEffect(()=>{
+  useEffect(() => {
     getUser();
-      },[])
+  }, []);
   return (
     <div className="feed-container">
       <div className="feed-header-row">

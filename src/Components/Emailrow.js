@@ -14,7 +14,9 @@ const Emailrow = ({ email }) => {
   const user_id = user?.user_id;
   const dispatch = useDispatch();
   const addtype = (type) => {
-    fetch(`http://localhost:8000/addtype/?type=${type}&user_id=${user_id}&message_id=${email.id}`)
+    fetch(
+      `http://localhost:8000/addtype/?type=${type}&user_id=${user_id}&message_id=${email.id}`
+    )
       .then((res) => {
         {
           return res.json();
@@ -37,10 +39,14 @@ const Emailrow = ({ email }) => {
     <div
       className="email-card"
       onClick={(e) => {
-        if(e.target.classList.contains("sender-name") || e.target.classList.contains("email-content")|| e.target.classList.contains("time-stamp")|| e.target.classList.contains("content")  )
-        {
-        dispatch(setemaildata(email));
-        dispatch(setIsselected(true));
+        if (
+          e.target.classList.contains("sender-name") ||
+          e.target.classList.contains("email-content") ||
+          e.target.classList.contains("time-stamp") ||
+          e.target.classList.contains("content")
+        ) {
+          dispatch(setemaildata(email));
+          dispatch(setIsselected(true));
         }
       }}
     >
@@ -48,27 +54,29 @@ const Emailrow = ({ email }) => {
         <CheckBoxOutlineBlank style={{ marginRight: 5, fontSize: 18 }} />
         <Star
           style={
-            user?.starred.length>0 && user.starred.some(({ message_id }) => {
+            user?.starred.length > 0 &&
+            user.starred.some(({ message_id }) => {
               return message_id == email.id;
             })
               ? { marginRight: 5, fontSize: 18, color: "#e5c06a" }
               : { marginRight: 5, fontSize: 18 }
           }
           onClick={(e) => {
-            e.target.style.color="#e5c06a";
+            e.target.style.color = "#e5c06a";
             addtype("star");
           }}
         />
         <LabelImportant
           style={
-            user?.important?.length>0 && user.important.some(({ message_id }) => {
+            user?.important?.length > 0 &&
+            user.important.some(({ message_id }) => {
               return message_id == email.id;
             })
               ? { marginRight: 5, fontSize: 18, color: "#e5c06a" }
               : { marginRight: 5, fontSize: 18 }
           }
           onClick={(e) => {
-            e.target.style.color="#e5c06a";
+            e.target.style.color = "#e5c06a";
             addtype("important");
           }}
         />

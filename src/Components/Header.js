@@ -1,18 +1,11 @@
-import {
-  Apps,
-  HelpOutline,
-  Person,
-  Search,
-  Settings,
-  Tune,
-} from "@material-ui/icons";
+import { Apps, HelpOutline, Search, Settings, Tune } from "@material-ui/icons";
 import { useState } from "react";
 import { useCookies } from "react-cookie";
 import { useSelector } from "react-redux";
 import { Navigate, useNavigate } from "react-router-dom";
 
 const Header = () => {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const [cookies, setCookie, removeCookie] = useCookies(`[user]`);
   const [isSelected, setisselected] = useState(false);
   const user = useSelector((state) => {

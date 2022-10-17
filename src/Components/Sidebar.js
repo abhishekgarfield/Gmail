@@ -22,7 +22,6 @@ const Sidebar = () => {
   const dispatch = useDispatch();
   const getformatttedmails = (type) => {
     if (type == "starred" || type == "important" || type == "sent") {
-      
       fetch(`http://localhost:8000/getemails/?type=${type}&user_id=${user_id}`)
         .then((res) => {
           return res.json();
@@ -68,7 +67,7 @@ const Sidebar = () => {
           chkActive(e);
           getformatttedmails("inbox");
           dispatch(setemaildata(null));
-            dispatch(setIsselected(false));
+          dispatch(setIsselected(false));
         }}
       >
         <Inbox style={{ marginRight: 8, fontSize: 18 }} />
@@ -80,7 +79,7 @@ const Sidebar = () => {
           chkActive(e);
           getformatttedmails("starred");
           dispatch(setemaildata(null));
-            dispatch(setIsselected(false));
+          dispatch(setIsselected(false));
         }}
       >
         <Star style={{ marginRight: 8, fontSize: 18 }} />
@@ -96,7 +95,7 @@ const Sidebar = () => {
           chkActive(e);
           getformatttedmails("important");
           dispatch(setemaildata(null));
-            dispatch(setIsselected(false));
+          dispatch(setIsselected(false));
         }}
       >
         <LabelImportant style={{ marginRight: 8, fontSize: 18 }} />
@@ -108,7 +107,7 @@ const Sidebar = () => {
           chkActive(e);
           getformatttedmails("sent");
           dispatch(setemaildata(null));
-            dispatch(setIsselected(false));
+          dispatch(setIsselected(false));
         }}
       >
         <Send style={{ marginRight: 8, fontSize: 18 }} />
