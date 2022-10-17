@@ -1,70 +1,69 @@
-# Getting Started with Create React App
+# Gmail
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Technologies used : Reactjs , js , html , css , phone UI ,Redux , Expressjs , Nodejs , Mongodb , Cookies
 
-## Available Scripts
+1) Authscreen : User needs to autbenticate otherwise he is shown this screen
+2) Homescreen : Contains all the inbox emails
+3) Compose message : Create email using a block and then send to existing user
+4) Star messages: Add emails to star 
+5) Importent emails : Add important emails
+6) Sent emails :Check all sent emails here
+7) Confirmation of email sent
+8) Open emails : Check email content
+9) Remove sidebar
+8) Logout
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Website : https://netflixgarfield.netlify.app/
+## Website demo video : https://youtu.be/4wHwE6MqePU
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Authscreen 
+i) Complete authentication for login (Password incorrect , email id doesnt exist)
+<img width="1440" alt="Screenshot 2022-10-17 at 6 51 59 PM" src="https://user-images.githubusercontent.com/49722470/196188147-622234a5-ae7a-4ab8-be6d-fa5bfbdbfe09.png">
 
-### `npm test`
+<img width="1440" alt="Screenshot 2022-10-17 at 6 51 46 PM" src="https://user-images.githubusercontent.com/49722470/196188189-3d3d7474-f221-4f00-bfc2-757155991a0e.png">
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+ii) Complete sign up authentication 
 
-### `npm run build`
+<img width="1440" alt="Screenshot 2022-10-17 at 6 52 12 PM" src="https://user-images.githubusercontent.com/49722470/196188249-536fc03b-a866-429c-b0d0-c8f25b27aff2.png">
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Compose message 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+i) Create email for users (All errors handled : Wont be bale to send email to non existing user ,Cannot send empty email)
+<img width="1440" alt="Screenshot 2022-10-17 at 6 44 40 PM" src="https://user-images.githubusercontent.com/49722470/196188635-8df4ebd3-fcca-4a08-912c-e32d8a290978.png">
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+ii) Minimize message box
+<img width="1440" alt="Screenshot 2022-10-17 at 6 44 58 PM" src="https://user-images.githubusercontent.com/49722470/196188722-031430aa-a51e-4a47-8e89-c76749c2d49c.png">
 
-### `npm run eject`
+iii) Maximize message box
+<img width="1440" alt="Screenshot 2022-10-17 at 6 44 47 PM" src="https://user-images.githubusercontent.com/49722470/196188788-c46cff07-9083-4176-91eb-326fd7017d6b.png">
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Star emails
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<img width="1440" alt="Screenshot 2022-10-17 at 6 45 18 PM" src="https://user-images.githubusercontent.com/49722470/196189238-77783262-ba1c-4ea2-ab8b-7c428b707c3e.png">
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Important emails 
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+<img width="1440" alt="Screenshot 2022-10-17 at 6 45 07 PM" src="https://user-images.githubusercontent.com/49722470/196189326-e583d0a3-f928-449b-94fe-9bb05c4f888d.png">
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Send emails 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+<img width="1440" alt="Screenshot 2022-10-17 at 6 45 11 PM" src="https://user-images.githubusercontent.com/49722470/196189391-b7f8419e-61ae-4420-8254-a7026c1965ba.png">
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Open email
 
-### Analyzing the Bundle Size
+<img width="1440" alt="Screenshot 2022-10-17 at 6 45 41 PM" src="https://user-images.githubusercontent.com/49722470/196189656-b7f7369e-bb53-48c6-82a8-455b3741dfb9.png">
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Remove sidebar
 
-### Making a Progressive Web App
+<img width="1440" alt="Screenshot 2022-10-17 at 6 45 56 PM" src="https://user-images.githubusercontent.com/49722470/196190336-4faf4753-6618-476a-8cf7-d54cbf5efa33.png">
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Logout
 
-### Advanced Configuration
+<img width="1440" alt="Screenshot 2022-10-17 at 6 46 06 PM" src="https://user-images.githubusercontent.com/49722470/196189722-488b1e9e-24ec-40d3-a88b-5d1d89fd5c76.png">
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
